@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: #f5f5f5;
+    font-size: 14px;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+}
+
+a {
+    color: #8a3efc;
+}
+
+a:hover{
+    color: #8a3efc;
+}
+
+.container {
+    width: 100% !important;
+}
+
+main {
+    width: 90%;
+    max-width: 500px;
+}
+
+
+main .content{
+    margin: 200px auto;
+}
+
+main, footer {
+    text-align: center;
+}
+
+main .card:hover{
+    border: 1px solid #8a3efc;
+}
+
+main .card .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+main .card .card-body h2.card-title {
+    color: #8a3efc;
+    font-weight: bold;
+}
+
+main .card .card-body .card-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto 30px;
+    width: 120px;
+    height: 120px;
+    background: #f2e9ff;
+    border-radius: 50%;
+}
+
+main .card .card-body p.card-text {
+    color: #666666;
+    font-size: 16px;
+    padding: 0 40px;
+}
+
+main .card .card-body .card-text {
+    margin-bottom: 30px;
+}
+
+main .card .card-body .card-image img {
+    max-width: 90px;
+}
+
+main form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    flex-direction: column;
+}
+
+main .header-form h2.card-title {
+    color: #8a3efc;
+    font-weight: bold;
+}
+    
+main .header-form .card-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto 30px;
+    width: 120px;
+    height: 120px;
+    background: #f2e9ff;
+    border-radius: 50%;
+}
+
+main .header-form .card-image img {
+    max-width: 90px;
+}
+
+main form label {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+    /* color: #7c2cf3; */
+    color: #666666;
+}
+
+.header-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-list .title h2{
+    color: #8a3efc;
+    font-weight: bold;
+}
+
+.card-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-list .table {
+    margin: 0;
+}
+
+.card-list .table td {
+    vertical-align: 0;
+}
+
+
+.card-list .table thead,
+.card-list .table tbody {
+    background: #FFF;
+}
+
+.card-list .table thead th {
+    border: none;
+    color: #8a3efc;
+}
+
+.card-list .table tbody td img {
+    width: 40px;
+    background: #f2e9ff;
+    border-radius: 50%;
+} 
+
+.action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.action button i {
+    font-size: 20px;
+}
+
+.btn-circle {
+    width: 40px;
+    height: 40px;
+    color: #8a3efc;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+}
+
+.btn-circle:hover{
+    background: #ddc5ff;
+}
+
+.btn-remove-circle {
+    width: 40px;
+    height: 40px;
+    color: #fc3e3e;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-remove-circle:hover{
+    background: #ddc5ff;
+    color: #fc3e3e;
+}
+
+.btn-default {
+    width: 150px;
+    border: 2px solid #8a3efc;
+    color: #8a3efc;
+    font-weight: bold;
+}
+
+.btn-default:hover{
+    background: #8a3efc;
+    color: #FFF;
+}
+
+.btn-create {
+    width: 200px;
+    border: 2px solid #8a3efc;
+    color: #FFF;
+    font-weight: bold;
+    background: #8a3efc;
+}
+
+.btn-create:hover{
+    background: #812ffd;
+    color: #FFF;
+}
+
+.form-control:focus{
+    box-shadow: 0 0 0 0.1rem #8a3efc;
+    border-color: #8a3efc;
+  }
+
+.form-control:hover{
+    border-color: #8a3efc;
+}
+
+footer {
+    margin-top: auto;
+    font-size: 16px;
+}
