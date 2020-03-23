@@ -15,4 +15,9 @@ class ModelStudent extends Model
         'email_aluno',
         'data_nascimento'
     ];
+
+    public function relRegistrations() 
+    {
+        return $this->hasMany('App\Models\ModelRegistration', 'id_aluno');
+    }
 }

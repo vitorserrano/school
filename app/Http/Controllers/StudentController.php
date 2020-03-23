@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StudentRequest;
+use Illuminate\Http\Request;
 use App\Models\ModelStudent;
 
 class StudentController extends Controller
@@ -14,35 +14,28 @@ class StudentController extends Controller
     {
         $this->objStudent = new ModelStudent();
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {   
-        $student = $this->objStudent->all();
+        $student = $this->objStudent->paginate(5);
         return view('student.index', compact('student'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('student.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StudentRequest $request)
-    {
+    public function store(Request $request)
+    {   
+        $this->validate($request, array(
+            'nome_aluno' => 'required',
+            'cpf' => 'required|size:11|unique:students,cpf',
+            'rg' => 'unique:students,rg',
+            'fone_celular' => 'required|size:11|unique:students,fone_celular',
+            'email_aluno' => 'required|unique:students,email_aluno',
+        ));
+
         $student = $this->objStudent->create([
             'nome_aluno' => $request->nome_aluno,
             'fone_celular' => $request->fone_celular,
@@ -52,59 +45,50 @@ class StudentController extends Controller
             'data_nascimento' => $request->data_nascimento,
         ]);
 
-        if ($student) {
-            $request->session()->flash(
-                'mensagem',
-                "ALuno cadastrado com sucesso!"
-            );
-
-        return redirect('/');
+        if ($student) { 
+            return redirect('/student');
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {   
         $student = $this->objStudent->find($id);
         return view('student.show', compact('student'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $student = $this->objStudent->find($id);
+        return view('student.create', compact('student'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(StudentRequest $request, $id)
-    {
-        //
+    public function update(Request $request, $id)
+    {   
+        $this->validate($request, array(
+            'nome_aluno' => 'required',
+            'cpf' => "required|size:11|unique:students,cpf,$id",
+            'rg' => "unique:students,rg,$id",
+            'fone_celular' => "required|size:11|unique:students,fone_celular,$id",
+            'email_aluno' => "required|unique:students,email_aluno,$id",
+        ));
+
+        $this->objStudent
+            ->where(['id' => $id])
+            ->update([
+                'nome_aluno' => $request->nome_aluno,
+                'fone_celular' => $request->fone_celular,
+                'cpf' => $request->cpf,
+                'rg' => $request->rg,
+                'email_aluno' => $request->email_aluno,
+                'data_nascimento' => $request->data_nascimento,
+            ]);
+
+            return redirect('/student');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $this->objStudent->destroy($id);
+        return redirect('/student');
     }
 }

@@ -4,14 +4,14 @@
     <div class="content-form">
         <div class="header-form mt-5">
             <h2 class="card-title">
-                @if(isset($student))
-                    Edição do Aluno
+                @if(isset($instructor))
+                    Edição do Instrutor
                 @else 
-                    Cadastro do Aluno
+                    Cadastro do Instrutor
                 @endif
             </h2>
                 <div class="card-image">
-                    <img src="{{ url('assets/img/student.svg') }}" alt="Alunos">
+                    <img src="{{ url('assets/img/instructor.svg') }}" alt="Instrutores">
                 </div>
         </div>
 
@@ -25,22 +25,22 @@
             </div>
         @endif
 
-        @if(isset($student))
-            <form name="formStudentEdit" method="POST" action="{{ url("/student/update/$student->id") }}" class="col-lg-12">
+        @if(isset($instructor))
+            <form name="formInstructorEdit" method="POST" action="{{ url("/instructor/update/$instructor->id") }}" class="col-lg-12">
         @else 
-            <form name="formStudentCreate" method="POST" action="{{ url("/student/create") }}" class="col-lg-12">
+            <form name="formInstructorCreate" method="POST" action="{{ url("/instructor/create") }}" class="col-lg-12">
         @endif
             @csrf
                 <div class="form-row col-lg-6">
                     <div class="col-lg-8 mt-4">
-                        <label>Nome do Aluno</label>
+                        <label>Nome do Instrutor</label>
                         <input 
-                            id="nome_aluno"
-                            name="nome_aluno"
+                            id="nome_instrutor"
+                            name="nome_instrutor"
                             type="text"
                             class="form-control"
                             placeholder="Digito o nome"
-                            value="{{ $student->nome_aluno ?? '' }}"
+                            value="{{ $instructor->nome_instrutor ?? '' }}"
                         />
                     </div>    
 
@@ -52,7 +52,7 @@
                             type="text"
                             class="form-control"
                             placeholder="9 9999-9999"
-                            value="{{ $student->fone_celular ?? '' }}"
+                            value="{{ $instructor->fone_celular ?? '' }}"
                         />
                     </div>    
 
@@ -64,7 +64,7 @@
                             type="text"
                             class="form-control"
                             placeholder="999.999.999/99"
-                            value="{{ $student->cpf ?? '' }}"
+                            value="{{ $instructor->cpf ?? '' }}"
                         />
                     </div>    
 
@@ -76,19 +76,19 @@
                             type="text"
                             class="form-control"
                             placeholder="Digiter o RG"
-                            value="{{ $student->rg ?? '' }}"
+                            value="{{ $instructor->rg ?? '' }}"
                         />
                     </div>       
 
                     <div class="col-lg-8 mt-4">
                         <label>E-mail</label>
                         <input 
-                            id="email_aluno"
-                            name="email_aluno"
+                            id="email_instrutor"
+                            name="email_instrutor"
                             type="email"
                             class="form-control"
                             placeholder="Digite o e-mail"
-                            value="{{ $student->email_aluno ?? '' }}"
+                            value="{{ $instructor->email_instrutor ?? '' }}"
                         />
                     </div>    
 
@@ -99,16 +99,27 @@
                             name="data_nascimento"
                             type="date"
                             class="form-control"
-                            value="{{ $student->data_nascimento ?? '' }}"
+                            value="{{ $instructor->data_nascimento ?? '' }}"
                         />
-                    </div> 
+                    </div>
+
+                    <div class="col-lg-12 mt-4">
+                        <label>Currículo</label>
+                        <input 
+                            id="mini_curriculum"
+                            name="mini_curriculum"
+                            type="text"
+                            class="form-control"
+                            value="{{ $instructor->mini_curriculum ?? '' }}"
+                        />
+                    </div>  
                 </div>
 
                 <button 
                     type="submit" 
                     class="btn btn-default mt-5"
                 >
-                    @if(isset($student))
+                    @if(isset($instructor))
                         Editar
                     @else 
                         Cadastrar

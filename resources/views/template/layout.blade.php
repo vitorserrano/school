@@ -38,9 +38,9 @@
             <p>Made By <a href="https://github.com/vitorserrano" target="_blank">Vitor Serrano</a></p> 
         </footer>
     
-        <script src="js/jquery-3.4.1.slim.mim.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+        <script src="{{ url('assets/js/lib/jquery-3.4.1.slim.mim.js') }}"></script>
+        <script src="{{ url('assets/js/lib/popper.min.js') }}"></script>
+        <script src="{{ url('assets/js/lib/bootstrap.min.js') }}"></script>
     </body>
 
 </html>

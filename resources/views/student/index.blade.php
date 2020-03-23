@@ -16,59 +16,66 @@
          </div>
       </div>
       <div class="card-list col-lg-12 mt-3">
-         <table class="table table-responsive-md table-hover">
-            <thead>
-               <tr>
-                  <th></th>
-                  <th>#</th>
-                  <th>Nome Aluno</th>
-                  <th>Nascimento</th>
-                  <th>CPF</th>
-                  <th>RG</th>
-                  <th>Celular</th>
-                  <th>E-mail</th>
-                  <th>Ações</th>
-               </tr>
-            </thead>
-            <tbody>
+         @csrf
+            <table class="table table-responsive-md table-hover">
+               <thead>
+                  <tr>
+                     <th></th>
+                     <th>#</th>
+                     <th>Nome Aluno</th>
+                     <th>Nascimento</th>
+                     <th>CPF</th>
+                     <th>RG</th>
+                     <th>Celular</th>
+                     <th>E-mail</th>
+                     <th>Ações</th>
+                  </tr>
+               </thead>
+               <tbody>
 
-               @foreach($student as $students)
-               <tr>
-                  <td><img src="{{ url('assets/img/student.svg') }}" alt="Aluno"></td>
-                  <td>{{ $students->id }}</td>
-                  <td>{{ $students->nome_aluno }}</td>
-                  <td>{{ $students->data_nascimento }}</td>
-                  <td>{{ $students->cpf }}</td>
-                  <td>{{ $students->rg }}</td>
-                  <td>{{ $students->fone_celular }}</td>
-                  <td>{{ $students->email_aluno }}</td>
-                  <td>
-                     <div class="action">
-                        <a href="">
-                           <button class="btn btn-circle">
-                              <i class="fa fa-pencil"></i>
-                           </button>
-                        </a>
+                  @foreach($student as $students)
+                     <tr>
+                        <td><img src="{{ url('assets/img/student.svg') }}" alt="Aluno"></td>
+                        <td>{{ $students->id }}</td>
+                        <td>{{ $students->nome_aluno }}</td>
+                        <td>{{ $students->data_nascimento }}</td>
+                        <td>{{ $students->cpf }}</td>
+                        <td>{{ $students->rg }}</td>
+                        <td>{{ $students->fone_celular }}</td>
+                        <td>{{ $students->email_aluno }}</td>
+                        <td>
+                           <div class="action">
+                              <form method="GET" action="{{ url("/student/edit/$students->id") }}">
+                                 @csrf
+                                    <button class="btn btn-circle">
+                                       <i class="fa fa-pencil"></i>
+                                    </button>
+                              </form>
 
-                        <a href="{{ url("student/$students->id") }}">
-                           <button class="btn btn-circle">
-                              <i class="fa fa-eye"></i>
-                           </button>
-                        </a>
+                              <form method="GET" action="{{ url("/student/show/$students->id") }}">
+                                 @csrf
+                                    <button class="btn btn-circle">
+                                       <i class="fa fa-eye"></i>
+                                    </button>
+                              </form>
+      
+                              <form method="POST" action="{{ url("/student/remove/$students->id") }}">
+                                 @csrf
+                                    <button class="btn btn-remove-circle">
+                                       <i class="fa fa-trash"></i>
+                                    </button>
+                              </form>
+                           </div>
+                        </td>
+                     </tr>
+                  @endforeach
 
-                        <a href="">
-                           <button class="btn btn-remove-circle">
-                              <i class="fa fa-trash"></i>
-                           </button>
-                        </a>
-                     </div>
-                  </td>
-               </tr>
-               @endforeach
-
-            </tbody>
-         </table>
+               </tbody>
+            </table>
       </div>
+   </div>
+   <div class="mt-2 float-right">
+      {{ $student->links() }}
    </div>
 </div>
 @endsection
