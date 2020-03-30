@@ -10,7 +10,7 @@
 - Clonar o projeto: git clone ```https://github.com/vitorserrano/school.git```
 - Dentro da pasta onde foi clonado executar: ```composer install```
 - Criar o database com o nome "school" - utf8mb4_unicode_ci 
-- Criar .env e alterar database: ```DB_DATABASE=school``
+- Criar .env e alterar database: ```DB_DATABASE=school```
 
 ### :page_facing_up: Anotações Importantes
 1. `php artisan make:controller StudentController --resource`
