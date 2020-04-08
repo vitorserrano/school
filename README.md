@@ -4,7 +4,13 @@
 
 ### :page_with_curl: Projeto
 - Projeto realizado a partir de um trabalho da faculdade.
-- Este repositório é CRUD (Create, Read, Update, Delete) feito em PHP com a utilização do Framework Laravel e também, possuí autentificação para login.
+
+### :page_with_curl: Funcionalidades
+- Autenticação para Login,
+- Criação de Matrículas, Alunos, Cursos, Instrutores e Usuários.
+- Visualização de Detalhes de Matrículas, Alunos, Cursos e Instrutores.
+- Atualização de Matrículas, Alunos, Cursos e Instrutores.
+- Remoção de Matrículas, Alunos, Cursos e Instrutores.
 
 ### :heavy_check_mark: Login
 <h1 align="center">
