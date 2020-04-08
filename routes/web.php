@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('index');
+    return view('auth.login');
 });
 
 // Registrations
@@ -42,4 +42,10 @@ Route::get('/instructor/edit/{id}', 'InstructorController@edit');
 Route::post('/instructor/update/{id}', 'InstructorController@update');
 Route::post('/instructor/remove/{id}', 'InstructorController@destroy');
 
+
+
+Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
